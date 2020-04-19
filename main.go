@@ -6,7 +6,9 @@ import (
 )
 
 func main() {
-	myConf := config.Config{}
-	myConf["SecretKey"] = "123"
+	myConf := config.Config{
+		"SecretKey": "123",
+	}
+
 	cmd.Execute(myConf)
 }
