@@ -20,6 +20,17 @@ func New(a *app.App) *Router {
 func (r *Router) Init() {
 	appRouter := r.Router
 	appRouter.Use(r.addConfigToContext)
+
+	conf := r.App.Config
+	routerHandler, ok := conf["RouterHandler"]
+
+	if ok {
+		routerHandler, ok := routerHandler.(func(router *mux.Router))
+		if ok {
+			routerHandler(r.Router)
+		}
+	}
+
 }
 
 func (r *Router) addConfigToContext(next http.Handler) http.Handler {
