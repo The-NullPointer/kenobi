@@ -17,7 +17,7 @@ func (a *App) validateConfig() (err error) {
 
 	key, ok := conf["SecretKey"]
 
-	if !ok || len(key.([]byte)) == 0 {
+	if !ok || len(key.(string)) == 0 {
 		return fmt.Errorf("SecretKey must be set")
 	}
 
