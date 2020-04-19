@@ -8,5 +8,5 @@ import (
 func main() {
 	myConf := config.Config{}
 	myConf["SecretKey"] = "123"
-	cmd.Execute(&myConf)
+	cmd.Execute(myConf)
 }

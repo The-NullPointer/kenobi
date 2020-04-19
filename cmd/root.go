@@ -13,7 +13,7 @@ var rootCmd = &cobra.Command{
 	},
 }
 
-func Execute(conf *config.Config) {
+func Execute(conf config.Config) {
 	appConfig = conf
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
@@ -21,4 +21,4 @@ func Execute(conf *config.Config) {
 	}
 }
 
-var appConfig *config.Config
+var appConfig config.Config
