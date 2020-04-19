@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 	"github.com/spf13/cobra"
+	"kenobi/app"
 	"kenobi/config"
 	"os"
 )
@@ -14,11 +15,20 @@ var rootCmd = &cobra.Command{
 }
 
 func Execute(conf config.Config) {
-	appConfig = conf
+
+	a, err := app.New(conf)
+
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+
+	appInstance = a
+
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
 }
 
-var appConfig config.Config
+var appInstance *app.App

@@ -24,12 +24,13 @@ var serveCmd = &cobra.Command{
 	Short: "runs an Http server",
 	RunE: func(cmd *cobra.Command, args []string) error {
 
-		a, err := app.New(appConfig)
+		err := appInstance.InitDb()
 
 		if err != nil {
 			return err
 		}
-		defer a.Close()
+
+		defer appInstance.Close()
 
 		ctx, cancel := context.WithCancel(context.Background())
 
@@ -47,7 +48,7 @@ var serveCmd = &cobra.Command{
 		go func() {
 			defer wg.Done()
 			defer cancel()
-			serveApp(ctx, a)
+			serveApp(ctx, appInstance)
 		}()
 
 		wg.Wait()

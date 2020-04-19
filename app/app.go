@@ -25,7 +25,7 @@ func (a *App) validateConfig() (err error) {
 
 }
 
-func (a *App) initDb() (err error) {
+func (a *App) InitDb() (err error) {
 
 	conf := a.Config
 
@@ -61,11 +61,6 @@ func New(conf config.Config) (app *App, err error) {
 	app = &App{Config: conf}
 	err = app.validateConfig()
 
-	if err != nil {
-		return app, err
-	}
-
-	err = app.initDb()
 	if err != nil {
 		return app, err
 	}
