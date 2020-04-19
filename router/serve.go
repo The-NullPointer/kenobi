@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/gorilla/handlers"
 	"github.com/sirupsen/logrus"
+	"kenobi/defaults"
 	"net/http"
 	"time"
 )
@@ -15,22 +16,27 @@ func (r *Router) Serve(ctx context.Context) {
 	HttpPort, ok := conf["HttpPort"]
 
 	if !ok || HttpPort.(int) == 0 {
-		HttpPort = 8000
+		HttpPort = defaults.Config["HttpPort"]
 	}
 
 	AllowedOrigins, ok := conf["AllowedOrigins"]
 	if !ok {
-		AllowedOrigins = []string{"*"}
+		AllowedOrigins = defaults.Config["AllowedOrigins"]
 	}
 
 	AllowedMethods, ok := conf["AllowedMethods"]
 	if !ok {
-		AllowedMethods = []string{"GET", "HEAD", "POST", "OPTIONS", "PUT", "PATCH"}
+		AllowedMethods = defaults.Config["AllowedMethods"]
 	}
 
 	AllowedHeaders, ok := conf["AllowedHeaders"]
 	if !ok {
-		AllowedHeaders = []string{"accept", "accept-encoding", "authorization", "content-type", "dnt", "origin", "user-agent", "x-csrftoken", "x-requested-with"}
+		AllowedHeaders = defaults.Config["AllowedHeaders"]
+	}
+
+	ReadTimeout, ok := conf["ReadTimeout"]
+	if !ok {
+		ReadTimeout = defaults.Config["ReadTimeout"]
 	}
 
 	cors := handlers.CORS(
@@ -42,7 +48,7 @@ func (r *Router) Serve(ctx context.Context) {
 	s := &http.Server{
 		Addr:        fmt.Sprintf(":%d", HttpPort),
 		Handler:     cors(r.Router),
-		ReadTimeout: 2 * time.Minute,
+		ReadTimeout: ReadTimeout.(time.Duration),
 	}
 
 	done := make(chan struct{})
