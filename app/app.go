@@ -53,6 +53,10 @@ func (a *App) initDb() (err error) {
 
 }
 
+func (a *App) Close() error {
+	return a.Database.Close()
+}
+
 func New(conf config.Config) (app *App, err error) {
 	app = &App{Config: conf}
 	err = app.validateConfig()
