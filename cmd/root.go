@@ -14,7 +14,7 @@ var rootCmd = &cobra.Command{
 	},
 }
 
-func Execute(conf config.Config, customCommands []ExecCommandFunction) {
+func Execute(conf config.Config, customCommands CommandCenter) {
 
 	a, err := app.New(conf)
 

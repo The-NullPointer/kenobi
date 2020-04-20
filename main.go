@@ -19,7 +19,7 @@ func main() {
 		"RouterHandler":   RegisterRoutes,
 	}
 
-	cmd.Execute(myConf, []cmd.ExecCommandFunction{testCommand, testCommand2})
+	cmd.Execute(myConf, cmd.CommandCenter{testCommand, testCommand2})
 
 }
 

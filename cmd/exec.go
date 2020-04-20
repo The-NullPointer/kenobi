@@ -13,4 +13,4 @@ var execCmd = &cobra.Command{
 	},
 }
 
-type ExecCommandFunction func(*app.App) *cobra.Command
+type CommandCenter []func(*app.App) *cobra.Command
