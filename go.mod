@@ -1,4 +1,4 @@
-module kenobi
+module github.com/theNullP0inter/kenobi
 
 go 1.14
 
