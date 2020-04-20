@@ -14,6 +14,8 @@ create a file `main.go` in your project folder
 
 ```go
 
+// main.go
+
 package main
 
 import (
@@ -42,12 +44,24 @@ func RegisterRoutes(router *mux.Router) {
 
 func testHandler(w http.ResponseWriter, req *http.Request) {
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte("yoo"))
+	w.Write([]byte("Hello There"))
 }
 
 
 
 ``` 
 
+Start the server using the following command.
+
+``` go run main.go serve ```
+
+
 ## Config
+
+Config is map that contains all the information needed for your Application
+
+
+
+
+
 

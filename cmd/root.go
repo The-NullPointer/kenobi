@@ -14,7 +14,7 @@ var rootCmd = &cobra.Command{
 	},
 }
 
-func Execute(conf config.Config) {
+func Execute(conf config.Config, customCommands []ExecCommandFunction) {
 
 	a, err := app.New(conf)
 
@@ -24,6 +24,12 @@ func Execute(conf config.Config) {
 	}
 
 	appInstance = a
+
+	for _, customCommand := range customCommands {
+		execCmd.AddCommand(customCommand(appInstance))
+	}
+
+	rootCmd.AddCommand(execCmd)
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)

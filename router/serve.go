@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/gorilla/handlers"
 	"github.com/sirupsen/logrus"
-	"github.com/theNullP0inter/kenobi/defaults"
 	"net/http"
 	"time"
 )
@@ -16,27 +15,27 @@ func (r *Router) Serve(ctx context.Context) {
 	HttpPort, ok := conf["HttpPort"]
 
 	if !ok || HttpPort.(int) == 0 {
-		HttpPort = defaults.Config["HttpPort"]
+		logrus.Error("HttpPort is required")
 	}
 
 	AllowedOrigins, ok := conf["AllowedOrigins"]
 	if !ok {
-		AllowedOrigins = defaults.Config["AllowedOrigins"]
+		logrus.Error("AllowedOrigins is required")
 	}
 
 	AllowedMethods, ok := conf["AllowedMethods"]
 	if !ok {
-		AllowedMethods = defaults.Config["AllowedMethods"]
+		logrus.Error("AllowedMethods is required")
 	}
 
 	AllowedHeaders, ok := conf["AllowedHeaders"]
 	if !ok {
-		AllowedHeaders = defaults.Config["AllowedHeaders"]
+		logrus.Error("AllowedHeaders is required")
 	}
 
 	ReadTimeout, ok := conf["ReadTimeout"]
 	if !ok {
-		ReadTimeout = defaults.Config["ReadTimeout"]
+		logrus.Error("ReadTimeout is required")
 	}
 
 	cors := handlers.CORS(

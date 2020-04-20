@@ -13,17 +13,4 @@ var execCmd = &cobra.Command{
 	},
 }
 
-type ExecCommand func(appInstance *app.App) *cobra.Command
-
-func init() {
-
-	registeredCommands, ok := appInstance.Config["CommandRegistry"]
-
-	if ok {
-		for _, command := range registeredCommands.([]ExecCommand) {
-			execCmd.AddCommand(command(appInstance))
-		}
-	}
-
-	rootCmd.AddCommand(execCmd)
-}
+type ExecCommandFunction func(*app.App) *cobra.Command
