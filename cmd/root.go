@@ -3,8 +3,8 @@ package cmd
 import (
 	"fmt"
 	"github.com/spf13/cobra"
-	"kenobi/app"
-	"kenobi/config"
+	"github.com/theNullP0inter/kenobi/app"
+	"github.com/theNullP0inter/kenobi/config"
 	"os"
 )
 

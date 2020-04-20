@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"github.com/spf13/cobra"
-	"kenobi/app"
+	"github.com/theNullP0inter/kenobi/app"
 )
 
 var execCmd = &cobra.Command{

@@ -27,7 +27,7 @@ func main() {
 
 	myConf := config.Config{
 		"SecretKey":       "123",
-		"DatabaseUri":     "host=localhost port=5432 user=admin dbname=zipi password=adminpassword sslmode=disable",
+		"DatabaseUri":     "host=localhost port=5432 user=admin dbname=test password=adminpassword sslmode=disable",
 		"DatabaseDialect": "postgres",
 		"RouterHandler":   RegisterRoutes,
 	}
@@ -48,3 +48,6 @@ func testHandler(w http.ResponseWriter, req *http.Request) {
 
 
 ``` 
+
+## Config
+

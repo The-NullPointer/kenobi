@@ -3,7 +3,7 @@ package router
 import (
 	"github.com/gorilla/context"
 	"github.com/gorilla/mux"
-	"kenobi/app"
+	"github.com/theNullP0inter/kenobi/app"
 	"net/http"
 )
 

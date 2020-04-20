@@ -1,8 +1,8 @@
 package defaults
 
 import (
-	"kenobi/cmd"
-	"kenobi/config"
+	"github.com/theNullP0inter/kenobi/cmd"
+	"github.com/theNullP0inter/kenobi/config"
 	"time"
 )
 

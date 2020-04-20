@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"github.com/gorilla/handlers"
 	"github.com/sirupsen/logrus"
-	"kenobi/defaults"
+	"github.com/theNullP0inter/kenobi/defaults"
 	"net/http"
 	"time"
 )

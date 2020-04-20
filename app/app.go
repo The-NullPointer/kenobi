@@ -2,9 +2,9 @@ package app
 
 import (
 	"fmt"
-	"kenobi/config"
-	"kenobi/db"
-	"kenobi/defaults"
+	"github.com/theNullP0inter/kenobi/config"
+	"github.com/theNullP0inter/kenobi/db"
+	"github.com/theNullP0inter/kenobi/defaults"
 )
 
 type App struct {
