@@ -29,7 +29,7 @@ func RegisterRoutes(router *mux.Router) {
 
 func testHandler(w http.ResponseWriter, req *http.Request) {
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte("yoo"))
+	w.Write([]byte("Hello There"))
 }
 
 func testCommand(app *app.App) *cobra.Command {
