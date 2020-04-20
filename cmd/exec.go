@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"github.com/spf13/cobra"
+	"kenobi/app"
 )
 
 var execCmd = &cobra.Command{
@@ -12,6 +13,17 @@ var execCmd = &cobra.Command{
 	},
 }
 
+type ExecCommand func(appInstance *app.App) *cobra.Command
+
 func init() {
+
+	registeredCommands, ok := appInstance.Config["CommandRegistry"]
+
+	if ok {
+		for _, command := range registeredCommands.([]ExecCommand) {
+			execCmd.AddCommand(command(appInstance))
+		}
+	}
+
 	rootCmd.AddCommand(execCmd)
 }

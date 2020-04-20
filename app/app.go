@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"kenobi/config"
 	"kenobi/db"
+	"kenobi/defaults"
 )
 
 type App struct {
@@ -58,7 +59,13 @@ func (a *App) Close() error {
 }
 
 func New(conf config.Config) (app *App, err error) {
-	app = &App{Config: conf}
+	appConf := defaults.Config
+
+	for k, v := range conf {
+		appConf[k] = v
+	}
+
+	app = &App{Config: appConf}
 	err = app.validateConfig()
 
 	if err != nil {
