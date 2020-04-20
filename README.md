@@ -149,10 +149,10 @@ func main() {
 }
 
 func RegisterRoutes(router *mux.Router) {
-	router.HandleFunc("/", testHandler)
+	router.HandleFunc("/", helloHandler)
 }
 
-func testHandler(w http.ResponseWriter, req *http.Request) {
+func helloHandler(w http.ResponseWriter, req *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte("Hello There"))
 }
